@@ -18,5 +18,3 @@ function isLucky(n) {
 
     return firstSum === secondSum;
 }
-
-console.log(isLucky(1230));
