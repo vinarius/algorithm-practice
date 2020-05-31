@@ -11,13 +11,10 @@ function commonCharacterCount(s1, s2) {
     const characters1 = {};
     const characters2 = {};
 
-    s1.split('').forEach(element => characters1.hasOwnProperty(element.toLowerCase()) ? characters1[element]++ : characters1[element] = 1);
-    s2.split('').forEach(element => characters2.hasOwnProperty(element.toLowerCase()) ? characters2[element]++ : characters2[element] = 1);
+    s1.split('').forEach(character => characters1.hasOwnProperty(character.toLowerCase()) ? characters1[character]++ : characters1[character] = 1);
+    s2.split('').forEach(character => characters2.hasOwnProperty(character.toLowerCase()) ? characters2[character]++ : characters2[character] = 1);
 
-    const lettersInBothStrings = [];
-
-    for (let key in characters1)
-        lettersInBothStrings.push(key);
+    const lettersInBothStrings = Object.keys(characters1);
 
     for (let key in characters2)
         if (!lettersInBothStrings.includes(key)) lettersInBothStrings.push(key);
@@ -30,9 +27,5 @@ function commonCharacterCount(s1, s2) {
     const evaluation = {};
     lettersInBothStrings.forEach(letter => evaluation[letter] = characters1[letter] < characters2[letter] ? characters1[letter] : characters2[letter]);
 
-    let result = 0;
-    for (let key in evaluation)
-        result += evaluation[key];
-
-    return result;
+    return Object.values(evaluation).reduce((acc, val) => acc += val);
 }
