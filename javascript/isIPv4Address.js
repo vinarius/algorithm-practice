@@ -20,17 +20,3 @@
 function isIPv4Address(inputString) {
     return /^(((2[0-5][0-5])|(2[0-4][0-9])|(1[0-9]?[0-9])|([1-9]?[0-9])|([0-9]))\.){3}((2[0-5][0-5])|(2[0-4][0-9])|(1[0-9]?[0-9])|([1-9]?[0-9])|([0-9]))$/.test(inputString);
 }
-
-for(let i=0; i<256; i++) {
-    for(let j=0; j<256; j++) {
-        for(let k=0; k<256; k++) {
-            for(let z=0; z<256; z++) {
-                const ip = [i, j, k, z].join('.');
-                if(!isIPv4Address(ip)) {
-                    console.log(ip);
-                    break;
-                }
-            }
-        }
-    }
-}
